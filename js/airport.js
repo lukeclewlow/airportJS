@@ -8,7 +8,7 @@ Airport.prototype.landPlane = function(plane) {
 	if(this.isFull === false){
 		this.capacityChecker();
 		this.runway.push(plane.land());}
-	else{console.log("Runway full")}	
+	else{return "Runway full"}	
 };
 
 Airport.prototype.takeOffPlane = function(plane) {

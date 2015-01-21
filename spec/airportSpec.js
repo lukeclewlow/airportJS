@@ -25,6 +25,10 @@ describe("Airport", function() {
 
 	describe("the airport", function() {
 
+			beforeEach(function() {
+			airport.landPlane(plane);
+			});
+
 		it("should know when the runways full", function() {
 			airport.landPlane(plane)
 			airport.landPlane(plane)
@@ -35,6 +39,16 @@ describe("Airport", function() {
 			expect(airport.isFull).toEqual(true)
 		});
 
+		it("a plane cannot land when runway is full", function() {
+			airport.landPlane(plane)
+			airport.landPlane(plane)
+			airport.landPlane(plane)
+			airport.landPlane(plane)
+			airport.landPlane(plane)
+			airport.landPlane(plane)
+			expect(airport.landPlane(plane)).toEqual("Runway full")
+		});
+		
 	});
 
 
