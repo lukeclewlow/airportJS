@@ -8,12 +8,25 @@ var Airport = function(){
 Airport.prototype.landPlane = function(plane) {
 	if(this.isFull === false){
 		this.capacityChecker();
-		this.runway.push(plane.land());}
-	else{return "Runway full"}	
+			if(this.weatherForecast()==="Sunny") 
+				{
+				this.runway.push(plane.land());
+			}
+			else{
+				return "Too stormy to land, keep circling!"
+			};}
+	else{
+		return "Runway full"
+	};
 };
 
 Airport.prototype.takeOffPlane = function(plane) {
-	this.runway.pop(plane.fly());
+	if(this.weatherForecast()==="Sunny") {
+		this.runway.pop(plane.fly());
+	}
+	else {
+		return "Too stormy for take off"
+	}
 };
 
 Airport.prototype.capacityChecker  = function(){
@@ -25,4 +38,6 @@ Airport.prototype.capacityChecker  = function(){
 Airport.prototype.weatherForecast = function(){
 	console.log(this.weather[Math.floor(Math.random() * this.weather.length)])
 };
+
+
 

@@ -1,5 +1,6 @@
 describe("Airport", function() {
 
+
 	var airport;
 
 	beforeEach(function() {
@@ -9,6 +10,8 @@ describe("Airport", function() {
 	beforeEach(function() {
 		plane = new Plane();
 	});
+
+
 
 	describe("a plane", function(){
 
@@ -24,6 +27,8 @@ describe("Airport", function() {
 		});
 
 	});
+
+
 
 	describe("the airport", function() {
 
@@ -44,11 +49,23 @@ describe("Airport", function() {
 	});
 
 
+
 	describe("weather conditions", function() {
 
 		it("should know when it's stormy", function(){
 			spyOn(airport, 'weatherForecast').and.returnValue("Stormy")
 			expect(airport.weatherForecast()).toEqual("Stormy")
+		});
+
+		it("a plane cannot take off when there is a storm a brewin", function() {
+			airport.landPlane(plane)
+			spyOn(airport, 'weatherForecast').and.returnValue("Stormy")
+			expect(airport.takeOffPlane(plane)).toEqual("Too stormy for take off")
+		});
+
+		it("a plane cannot land when there is a storm a brewin", function() {
+			spyOn(airport, 'weatherForecast').and.returnValue("Stormy")
+			expect(airport.landPlane(plane)).toEqual("Too stormy to land, keep circling!")
 		});
 		
 	});
