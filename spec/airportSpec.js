@@ -44,4 +44,13 @@ describe("Airport", function() {
 	});
 
 
+	describe("weather conditions", function() {
+
+		it("should know when it's stormy", function(){
+			spyOn(airport, 'weatherForecast').and.returnValue("Stormy")
+			expect(airport.weatherForecast()).toEqual("Stormy")
+		});
+		
+	});
+
 });

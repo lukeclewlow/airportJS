@@ -2,6 +2,7 @@ var Airport = function(){
 	this.runway = [];
 	this.capacity = 5;
 	this.isFull = false;
+	this.weather = ["Sunny", "Stormy"]
 };
 
 Airport.prototype.landPlane = function(plane) {
@@ -20,3 +21,8 @@ Airport.prototype.capacityChecker  = function(){
 		this.isFull = true
 	};
 };
+
+Airport.prototype.weatherForecast = function(){
+	console.log(this.weather[Math.floor(Math.random() * this.weather.length)])
+};
+
